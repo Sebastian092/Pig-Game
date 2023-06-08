@@ -51,3 +51,20 @@ const init = function () {
       }
     }
   });
+
+  btnHold.addEventListener('click', function () {
+    if (playing) {
+      scores[activePlayer] += currentScore;
+      document.getElementById(`score__${activePlayer}`).innerText = scores[activePlayer];
+      if (scores[activePlayer] >= 100) {
+        playing = false;
+        diceEl.classList.add('hidden');
+        document.querySelector(`.player__${activePlayer}`).classList.add('player__winner');
+        document.querySelector(`.player__${activePlayer}`).classList.remove('player__active');
+      } else {
+        switchPlayer();
+      }
+    }
+  });
+  
+  btnNew.addEventListener('click', init);
