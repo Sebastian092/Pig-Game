@@ -9,6 +9,7 @@ const btnNew = document.querySelector('.btn__new');
 const btnRoll = document.querySelector('.btn__roll');
 const btnHold = document.querySelector('.btn__hold');
 
+let scores, currentScore, activePlayer, playing;
 
 const init = function () {
     scores = [0, 0];
@@ -28,3 +29,11 @@ const init = function () {
     player1El.classList.remove('player__active');
   };
   init();
+
+  const switchPlayer = function () {
+    document.getElementById(`current__${activePlayer}`).innerText = 0;
+    currentScore = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    player0El.classList.toggle('player__active');
+    player1El.classList.toggle('player__active');
+  };
