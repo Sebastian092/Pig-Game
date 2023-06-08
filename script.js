@@ -37,3 +37,17 @@ const init = function () {
     player0El.classList.toggle('player__active');
     player1El.classList.toggle('player__active');
   };
+
+  btnRoll.addEventListener('click', function () {
+    if (playing) {
+      const dice = Math.trunc(Math.random() * 6) + 1;
+      diceEl.classList.remove('hidden');
+      diceEl.src = `dice-${dice}.png`;
+      if (dice !== 1) {
+        currentScore += dice;
+        document.getElementById(`current__${activePlayer}`).innerText = currentScore;
+      } else {
+        switchPlayer();
+      }
+    }
+  });
